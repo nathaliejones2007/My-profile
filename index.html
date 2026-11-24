@@ -1,0 +1,1443 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Little World | E-Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+  <style>
+  :root {
+    --pink:#e8a9b9;
+    --light:#fff5f5;
+    --deep:#a65e76;
+    --sage:#8da18a;
+    --green:#526c57;
+    --cream:#fffaf3;
+    --text:#514449;
+  }
+
+  * {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+  }
+
+  body {
+    background:var(--cream);
+    color:var(--text);
+    font-family:'DM Sans',sans-serif;
+  }
+
+  header {
+    background:rgba(255,250,243,.97);
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:10;
+    box-shadow:0 3px 15px #a65e7610;
+  }
+
+  .logo {
+    font-family:'Playfair Display',serif;
+    font-size:25px;
+    color:var(--deep);
+  }
+
+  nav {
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+
+  nav a {
+    text-decoration:none;
+    color:var(--text);
+    font-size:13px;
+    font-weight:600;
+  }
+
+  nav a:hover {color:var(--deep);}
+
+  .hero {
+    padding:75px 8%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:65px;
+    background:var(--light);
+    flex-wrap:wrap;
+  }
+
+  .hero-text {flex:1;min-width:270px;}
+
+  .eyebrow {
+    color:var(--deep);
+    letter-spacing:4px;
+    font-size:11px;
+    text-transform:uppercase;
+  }
+
+  h1 {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(42px,6vw,68px);
+    line-height:1.15;
+    margin:20px 0;
+    color:#704b57;
+  }
+
+  h1 em {color:var(--deep);}
+
+  .hero-text p {
+    line-height:1.9;
+    max-width:460px;
+    color:#77676b;
+  }
+
+  .hero-img {
+    width:320px;
+    height:420px;
+    object-fit:cover;
+    border-radius:48% 48% 15px 15px;
+    border:9px solid white;
+    box-shadow:0 15px 40px #a65e7625;
+  }
+
+  .btn {
+    display:inline-block;
+    background:var(--deep);
+    color:white;
+    padding:13px 25px;
+    border-radius:30px;
+    text-decoration:none;
+    margin-top:20px;
+    font-size:13px;
+    border:none;
+    cursor:pointer;
+    transition:.3s;
+  }
+
+  .btn:hover {background:var(--green);}
+
+  section {padding:85px 8%;}
+
+  .section-title {
+    text-align:center;
+    margin-bottom:45px;
+  }
+
+  .section-title small {
+    color:var(--deep);
+    letter-spacing:4px;
+    text-transform:uppercase;
+  }
+
+  .section-title h2 {
+    font-family:'Playfair Display',serif;
+    font-size:40px;
+    margin-top:10px;
+    color:#704b57;
+  }
+
+  .section-title p {
+    margin-top:10px;
+    color:#897a7d;
+    font-size:14px;
+  }
+
+  .about {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+  }
+
+  .about-box {
+    background:#f7e5e9;
+    padding:38px;
+    border-radius:20px;
+    line-height:1.9;
+  }
+
+  .about-box h3 {
+    font-family:'Playfair Display',serif;
+    font-size:29px;
+    color:var(--deep);
+    margin-bottom:15px;
+  }
+
+  .about-details {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+  }
+
+  .detail {
+    background:white;
+    padding:17px;
+    border-radius:12px;
+    font-size:13px;
+  }
+
+  .detail strong {
+    display:block;
+    color:var(--deep);
+    margin-bottom:5px;
+  }
+
+  #gallery {background:#fff6f5;}
+
+  .filters {
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:25px;
+  }
+
+  .filter {
+    border:1px solid #e6bdc8;
+    background:white;
+    color:var(--deep);
+    padding:10px 20px;
+    border-radius:25px;
+    cursor:pointer;
+  }
+
+  .filter.active,.filter:hover {
+    background:var(--deep);
+    color:white;
+  }
+
+  .upload-area {
+    text-align:center;
+    margin-bottom:35px;
+  }
+
+  .upload-area p {
+    font-size:12px;
+    color:#8b777d;
+    margin-top:10px;
+  }
+
+  .gallery {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+  }
+
+  .photo {
+    height:290px;
+    border-radius:12px;
+    overflow:hidden;
+    position:relative;
+    cursor:pointer;
+    background:#f1e3e4;
+  }
+
+  .photo img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s;
+  }
+
+  .photo:hover img {transform:scale(1.08);}
+
+  .photo-label {
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    color:white;
+    padding:25px 15px 15px;
+    background:linear-gradient(transparent,#35242d9c);
+    font-size:13px;
+  }
+
+  .album-section {background:#f3f5ef;}
+
+  .album-actions {
+    text-align:center;
+    margin-bottom:35px;
+  }
+
+  .album-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+
+  .album {
+    background:white;
+    padding:14px;
+    border-radius:17px;
+    text-align:center;
+    box-shadow:0 5px 20px #a65e7610;
+    transition:.3s;
+  }
+
+  .album:hover {transform:translateY(-5px);}
+
+  .album-cover {
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:12px;
+    background:#f7e5e9;
+  }
+
+  .album h3 {
+    font-family:'Playfair Display',serif;
+    color:var(--green);
+    margin:15px 0 5px;
+  }
+
+  .album p {
+    font-size:12px;
+    color:#8b8880;
+    margin-bottom:12px;
+  }
+
+  .album-buttons {
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .album-buttons button {
+    border:none;
+    padding:9px 13px;
+    border-radius:20px;
+    cursor:pointer;
+    background:#f7e5e9;
+    color:var(--deep);
+    font-size:11px;
+  }
+
+  .album-buttons button:hover {
+    background:var(--deep);
+    color:white;
+  }
+
+  .album-viewer {
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:40;
+    background:#211b20ee;
+    padding:20px;
+    overflow-y:auto;
+  }
+
+  .album-viewer.show {display:block;}
+
+  .album-viewer-content {
+    background:var(--cream);
+    max-width:1100px;
+    margin:20px auto;
+    padding:35px;
+    border-radius:20px;
+    min-height:85vh;
+    position:relative;
+  }
+
+  .album-viewer-content h2 {
+    font-family:'Playfair Display',serif;
+    color:var(--deep);
+    font-size:32px;
+    margin-bottom:10px;
+  }
+
+  .album-viewer-content p {
+    color:#897a7d;
+    margin-bottom:15px;
+  }
+
+  .viewer-close {
+    position:absolute;
+    top:12px;
+    right:20px;
+    border:none;
+    background:none;
+    color:var(--deep);
+    font-size:35px;
+    cursor:pointer;
+  }
+
+  .album-photo-grid {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-top:30px;
+  }
+
+  .album-photo {
+    position:relative;
+    height:210px;
+    border-radius:12px;
+    overflow:hidden;
+    background:#f1e3e4;
+  }
+
+  .album-photo img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    cursor:pointer;
+  }
+
+  .delete-photo {
+    position:absolute;
+    top:8px;
+    right:8px;
+    border:none;
+    background:#a65e76;
+    color:white;
+    border-radius:50%;
+    width:30px;
+    height:30px;
+    cursor:pointer;
+    font-size:18px;
+  }
+
+  .empty-album {
+    grid-column:1/-1;
+    text-align:center;
+    padding:60px 15px;
+    color:#a68c94;
+    background:#f7e5e9;
+    border-radius:15px;
+  }
+
+  .journey {
+    background:var(--light);
+    text-align:center;
+  }
+
+  .journey-box {
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    line-height:2;
+  }
+
+  .journey-box h3 {
+    font-family:'Playfair Display',serif;
+    color:var(--deep);
+    font-size:26px;
+  }
+
+  .contact {text-align:center;}
+
+  .contact p {
+    line-height:2;
+    color:#897a7d;
+  }
+
+  footer {
+    padding:30px;
+    background:#f2e0e5;
+    text-align:center;
+    color:var(--deep);
+    font-size:12px;
+  }
+
+  .lightbox {
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#211b20ee;
+    z-index:60;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+  }
+
+  .lightbox.show {display:flex;}
+
+  .lightbox img {
+    max-width:90%;
+    max-height:85vh;
+    object-fit:contain;
+  }
+
+  .close {
+    position:absolute;
+    top:20px;
+    right:30px;
+    color:white;
+    font-size:35px;
+    cursor:pointer;
+  }
+
+
+  /* SCHOOL BACKGROUND */
+  .school-timeline {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    gap: 18px;
+  }
+
+  .school-card {
+    background: white;
+    border-left: 5px solid var(--pink);
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 5px 20px #a65e7610;
+  }
+
+  .school-card h3 {
+    color: var(--deep);
+    font-family: 'Playfair Display',serif;
+    font-size: 23px;
+    margin-bottom: 7px;
+  }
+
+  .school-card p {
+    color: #77676b;
+    line-height: 1.8;
+    font-size: 14px;
+  }
+
+  .school-card .school-years {
+    color: var(--green);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+
+  /* CLICKABLE ACHIEVEMENTS */
+  .achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .achievement-card {
+    text-align: left;
+    background: white;
+    border: 1px solid #f0dce2;
+    border-radius: 16px;
+    padding: 23px;
+    color: var(--text);
+    cursor: pointer;
+    min-height: 175px;
+    box-shadow: 0 5px 20px #a65e7610;
+    transition: .25s;
+    font: inherit;
+  }
+
+  .achievement-card:hover,
+  .achievement-card:focus-visible {
+    transform: translateY(-5px);
+    border-color: var(--pink);
+    box-shadow: 0 12px 25px #a65e7620;
+    outline: none;
+  }
+
+  .achievement-card .achievement-icon {
+    display: block;
+    font-size: 25px;
+    margin-bottom: 12px;
+  }
+
+  .achievement-card strong {
+    display: block;
+    color: var(--deep);
+    font-family: 'Playfair Display',serif;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .achievement-card span:last-child {
+    display: block;
+    color: #897a7d;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .achievement-hint {
+    text-align: center;
+    color: #897a7d;
+    font-size: 13px;
+    margin: -25px 0 28px;
+  }
+
+  .achievement-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    background: #211b20dd;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .achievement-modal.show { display: flex; }
+
+  .achievement-modal-content {
+    width: min(520px, 100%);
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 38px;
+    position: relative;
+    box-shadow: 0 15px 45px #0003;
+  }
+
+  .achievement-modal-content h2 {
+    color: var(--deep);
+    font-family: 'Playfair Display',serif;
+    font-size: 29px;
+    margin: 8px 35px 12px 0;
+  }
+
+  .achievement-modal-image {
+    display: block;
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 12px;
+    margin: 20px auto;
+    background: #f7e5e9;
+  }
+
+  .achievement-modal-content p {
+    color: #77676b;
+    line-height: 1.8;
+    font-size: 14px;
+  }
+
+  .achievement-modal-content .modal-category {
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .achievement-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    border: 0;
+    background: none;
+    color: var(--deep);
+    font-size: 32px;
+    cursor: pointer;
+  }
+
+  @media(max-width:750px) {
+    header {flex-direction:column;gap:15px;}
+    nav {justify-content:center;gap:13px;}
+    .hero {text-align:center;}
+    .hero-text p {margin:auto;}
+    .hero-img {width:270px;height:350px;}
+    .about {grid-template-columns:1fr;}
+    .achievement-grid {grid-template-columns:repeat(2,minmax(0,1fr));}
+    .gallery,.album-grid {grid-template-columns:repeat(2,1fr);}
+    .photo {height:220px;}
+    .album-photo-grid {grid-template-columns:repeat(2,1fr);}
+  }
+
+  @media(max-width:450px) {
+    .gallery,.album-grid,.album-photo-grid,.achievement-grid {grid-template-columns:1fr;}
+    .photo {height:300px;}
+    .section-title h2 {font-size:32px;}
+    .album-viewer-content {padding:20px;}
+  }
+  </style>
+  </head>
+
+  <body>
+
+  <header>
+    <div class="logo">♡ My Little World</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Photography</a>
+      <a href="#albums">Albums</a>
+      <a href="#journey">School</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+      
+    </nav>
+  </header>
+
+  <!-- HOME -->
+  <div class="hero" id="home">
+    <div class="hero-text">
+      <div class="eyebrow">♡ Welcome to my little world</div>
+      <h1>Capturing Life’s <em>Beautiful</em> Moments.</h1>
+      <p>
+        Hello! I’m Nathalie, and welcome to my personal e-portfolio.
+        A little corner of the internet where I share
+        my memories, adventures, photographs, and
+        everything that makes life beautiful.
+      </p>
+      <a class="btn" href="#gallery">Explore My Gallery ↗</a>
+    </div>
+
+    <img src="image/1.jpg" class="hero-img" alt="nathalie portrait">
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-title">
+      <small>A little introduction</small>
+      <h2>Get to Know Me ♡</h2>
+      <p>Every person has a story. Here's a little piece of mine.</p>
+    </div>
+
+    <div class="about">
+      <div class="about-box">
+        <h3>Hello, I’m Nathalie!</h3>
+        <p>
+          I’m a 2nd-year Bachelor of Science in Information Systems
+          student. I have been a campus journalist for five years,
+          and I enjoy photography, exploring new places, and spending
+          time with animals. I’m a girl who loves pink and believes
+          every experience is an opportunity to learn and grow.
+        </p>
+      </div>
+
+      <div class="about-details">
+        <div class="detail">
+          <strong>♡ Full Name</strong>
+          Nathalie Jones Socorin
+        </div>
+        <div class="detail">
+          <strong>✿ Age</strong>
+          19
+        </div>
+        <div class="detail">
+          <strong>♡ Gender</strong>
+          Female
+        </div>
+        <div class="detail">
+          <strong>✿ School</strong>
+          Inabanga College of Arts and Sciences
+        </div>
+        <div class="detail">
+          <strong>♡ Hobbies</strong>
+          Photography, exploring, and animals
+        </div>
+        <div class="detail">
+          <strong>✿ Favorite Color</strong>
+          Pink!
+        </div>
+        <div class="detail">
+          <strong>♡ Interests</strong>
+          Photography, journalism, and exploration
+        </div>
+        <div class="detail">
+          <strong>✿ Dream</strong>
+          To keep learning, growing, and exploring
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTOGRAPHY -->
+  <section id="gallery">
+    <div class="section-title">
+      <small>Through my lens</small>
+      <h2>My Photography Diary 📷</h2>
+      <p>Little moments, beautiful places, and memories worth keeping.</p>
+    </div>
+
+    <div class="filters">
+      <button class="filter active" onclick="filterPhotos('all',this)">All Photos</button>
+      <button class="filter" onclick="filterPhotos('nature',this)">Nature</button>
+      <button class="filter" onclick="filterPhotos('travel',this)">Travel</button>
+      <button class="filter" onclick="filterPhotos('portrait',this)">Portraits</button>
+      <button class="filter" onclick="filterPhotos('memories',this)">Memories</button>
+    </div>
+
+    <div class="upload-area">
+      <label class="btn" for="upload">＋ Add My Pictures</label>
+      <input type="file" id="upload" accept="image/*" multiple hidden>
+      <p>Select multiple pictures to add to your photography gallery.</p>
+    </div>
+
+    <div class="gallery" id="galleryGrid">
+      <div class="photo" data-category="nature" onclick="viewPhoto(this)">
+        <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=700" alt="Sunrise">
+        <div class="photo-label">Morning in nature</div>
+      </div>
+
+      <div class="photo" data-category="nature" onclick="viewPhoto(this)">
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=700" alt="Forest">
+        <div class="photo-label">Into the forest</div>
+      </div>
+
+      <div class="photo" data-category="travel" onclick="viewPhoto(this)">
+        <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=700" alt="Mountain">
+        <div class="photo-label">Somewhere beautiful</div>
+      </div>
+
+      <div class="photo" data-category="memories" onclick="viewPhoto(this)">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=700" alt="Flowers">
+        <div class="photo-label">Flowers and sunshine</div>
+      </div>
+
+      <div class="photo" data-category="travel" onclick="viewPhoto(this)">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=700" alt="Landscape">
+        <div class="photo-label">Beautiful escapes</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALBUMS -->
+  <section class="album-section" id="albums">
+    <div class="section-title">
+      <small>My favorite collections</small>
+      <h2>Photo Albums ♡</h2>
+      <p>Different chapters, different memories.</p>
+    </div>
+
+    <div class="album-actions">
+      <button class="btn" onclick="createAlbum()">＋ Create New Album</button>
+    </div>
+
+    <div class="album-grid" id="albumGrid"></div>
+  </section>
+
+  <!-- ALBUM VIEWER -->
+  <div class="album-viewer" id="albumViewer">
+    <div class="album-viewer-content">
+      <button class="viewer-close" onclick="closeAlbum()">×</button>
+      <h2 id="viewerTitle">My Album ♡</h2>
+      <p id="viewerDescription"></p>
+
+      <label class="btn" for="albumUpload">＋ Add Multiple Photos</label>
+      <input type="file" id="albumUpload" accept="image/*" multiple hidden>
+
+      <div class="album-photo-grid" id="albumPhotoGrid"></div>
+    </div>
+  </div>
+
+  <!-- SCHOOL BACKGROUND -->
+  <section class="journey" id="journey">
+    <div class="section-title">
+      <small>Growing and learning</small>
+      <h2>Educational Background ✿</h2>
+      <p>Every school year has helped shape the person and student I am today.</p>
+    </div>
+
+    <div class="school-timeline">
+      <article class="school-card">
+        <p class="school-years">2012 – 2019</p>
+        <h3>Elementary School</h3>
+        <p><strong>Nabuad Elementary School</strong></p>
+        <p>Consistent With Honors</p>
+      </article>
+
+      <article class="school-card">
+        <p class="school-years">2019 – 2023</p>
+        <h3>Junior High School</h3>
+        <p><strong>Inabanga High School</strong></p>
+        <p>Consistent With High Honors</p>
+      </article>
+
+      <article class="school-card">
+        <p class="school-years">2023 – 2025</p>
+        <h3>Senior High School</h3>
+        <p><strong>Inabanga High School</strong></p>
+        <p>Accountancy, Business and Management (ABM)</p>
+        <p>Consistent With High Honors</p>
+      </article>
+
+      <article class="school-card">
+        <p class="school-years">2025 – PRESENT</p>
+        <h3>College</h3>
+        <p><strong>Inabanga College of Arts and Sciences</strong></p>
+        <p>2nd Year – Bachelor of Science in Information Systems</p>
+      </article>
+    </div>
+  </section>
+  <!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-title">
+    <small>My milestones</small>
+    <h2>Achievements &amp; Recognitions ♡</h2>
+    <p>A collection of experiences, recognitions, and opportunities that I’m proud to be part of.</p>
+  </div>
+
+  <p class="achievement-hint">Click any achievement card to read more.</p>
+
+  <div class="achievement-grid">
+
+    <button class="achievement-card" type="button"
+      onclick="showAchievement('Silkscreen Printmaking', 'Elementary • Division Level', 'Participated in the Division Level Silkscreen Printmaking activity during my elementary years.', 'achievements/silkscreen.jpg')">
+      <span class="achievement-icon">🎨</span>
+      <strong>Silkscreen Printmaking</strong>
+      <span>Division Level • Elementary</span>
+    </button>
+
+    <button class="achievement-card" type="button"
+      onclick="showAchievement('Division Schools Press Conference', '3rd Placer • Photojournalism', 'Earned 3rd Place in Photojournalism during the Division Schools Press Conference.', 'image/6.jpg')">
+      <span class="achievement-icon">📷</span>
+      <strong>Division Schools Press Conference</strong>
+      <span>3rd Placer in Photojournalism</span>
+    </button>
+
+    <button class="achievement-card" type="button"
+      onclick="showAchievement('Microsoft Youth Ambassador', 'Youth Leadership', 'Recognized as a Microsoft Youth Ambassador.', 'image/8.jpg')">
+      <span class="achievement-icon">💻</span>
+      <strong>Microsoft Youth Ambassador</strong>
+      <span>Ambassador recognition</span>
+    </button>
+
+    <button class="achievement-card" type="button"
+      onclick="showAchievement('Ms. ICAS 2025', 'Pageant • 2025', 'Participated in Ms. ICAS 2025, an experience that became part of my college journey.', 'image/7.jpg')">
+      <span class="achievement-icon">👑</span>
+      <strong>Ms. ICAS 2025</strong>
+      <span>Participant</span>
+    </button>
+
+    <button class="achievement-card" type="button"
+      onclick="showAchievement('AI Learners Bootcamp for Skilling and Employability', 'Participant • 2024', 'Joined the AI Learners Bootcamp for Skilling and Employability in 2024.', 'image/5.jpg')">
+      <span class="achievement-icon">🤖</span>
+      <strong>AI Learners Bootcamp</strong>
+      <span>Skilling and Employability • 2024 Participant</span>
+    </button>
+
+    <button class="achievement-card" type="button"
+      onclick="showAchievement('USWAG – ALCU 7', '1st Regional Student Leaders Congress', 'Participated in the 1st Regional Student Leaders Congress under USWAG–ALCU 7.', 'image/9.jpg')">
+      <span class="achievement-icon">🤝</span>
+      <strong>USWAG – ALCU 7</strong>
+      <span>1st Regional Student Leaders Congress • Participant</span>
+    </button>
+
+    <button class="achievement-card" type="button"
+      onclick="showAchievement('Search for Raffia Festival Queen 2026', 'Pageant • 2026', 'Participated in the Search for Raffia Festival Queen 2026.', 'image/2.jpg')">
+      <span class="achievement-icon">🌸</span>
+      <strong>Raffia Festival Queen 2026</strong>
+      <span>Pageant Participant</span>
+    </button>
+
+    <button class="achievement-card" type="button"
+      onclick="showAchievement('Arduino Contest', '3rd Placer • 1st Year College', 'Earned 3rd Place in an Arduino Contest during my first year in college with the Mini-Traffic Light System project.', 'image/4.jpg')">
+      <span class="achievement-icon">🚦</span>
+      <strong>Arduino Contest</strong>
+      <span>3rd Placer • Mini-Traffic Light System</span>
+    </button>
+
+    <button class="achievement-card" type="button"
+      onclick="showAchievement('The Nexus', 'Associate Editor-in-Chief', 'Served as Associate Editor-in-Chief for Multimedia and Digital Affairs of The Nexus.', 'achievements/the-nexus.jpg')">
+      <span class="achievement-icon">📰</span>
+      <strong>The Nexus</strong>
+      <span>Associate Editor-in-Chief • Multimedia and Digital Affairs</span>
+    </button>
+
+  </div>
+</section>
+
+  <!-- ACHIEVEMENT DETAILS MODAL -->
+  <div class="achievement-modal" id="achievementModal"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="achievementModalTitle"
+       onclick="if(event.target === this) closeAchievement()">
+    <div class="achievement-modal-content">
+      <button class="achievement-modal-close" type="button"
+        aria-label="Close achievement details"
+        onclick="closeAchievement()">×</button>
+
+      <p class="modal-category" id="achievementModalCategory">Achievement</p>
+      <h2 id="achievementModalTitle">Achievement title</h2>
+
+      <image id="achievementModalImage"
+           class="achievement-modal-image"
+           src="image/1.jpgs"
+           alt="Achievement photo">
+
+      <p id="achievementModalDescription">Achievement description</p>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-title">
+      <small>Let's stay connected</small>
+      <h2>Thank You for Visiting ♡</h2>
+    </div>
+
+    <p>
+      Thank you for taking a little time to explore my world.
+      <br>
+      I hope you enjoyed looking through my memories!
+    </p>
+
+    <a class="btn" href="#home">Back to Home ♡</a>
+  </section>
+
+  <footer>
+    Made with ♡ and a little sunshine.
+    <br><br>
+    © 2026 My Little World | Student E-Portfolio
+  </footer>
+
+  <!-- PHOTO LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closePhoto()">
+    <span class="close">&times;</span>
+    <img id="lightboxImage" src="" alt="Enlarged photograph">
+  </div>
+
+  <script>
+
+
+  // ACHIEVEMENT DETAILS
+  function showAchievement(title, category, description, image) {
+    document.getElementById("achievementModalTitle").textContent = title;
+    document.getElementById("achievementModalCategory").textContent = category;
+    document.getElementById("achievementModalDescription").textContent = description;
+
+    const modalImage = document.getElementById("achievementModalImage");
+
+    if (image) {
+      modalImage.src = image;
+      modalImage.alt = title;
+      modalImage.style.display = "block";
+      modalImage.onerror = function() {
+        this.style.display = "none";
+      };
+    } else {
+      modalImage.removeAttribute("src");
+      modalImage.style.display = "none";
+    }
+
+    document.getElementById("achievementModal").classList.add("show");
+  }
+
+  function closeAchievement() {
+    document.getElementById("achievementModal").classList.remove("show");
+  }
+
+  // DATABASE
+  let db;
+  let currentAlbumId = null;
+  let galleryUrls = [];
+
+  const defaultAlbums = [
+    {
+      id:"nature",
+      name:"Nature Diary",
+      description:"Green places and peaceful views",
+      cover:"https://images.unsplash.com/photo-1448375240586-882707db888b?w=600"
+    },
+    {
+      id:"travel",
+      name:"Travel Diaries",
+      description:"Adventures and beautiful destinations",
+      cover:"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600"
+    },
+    {
+      id:"portraits",
+      name:"Portraits",
+      description:"People and special moments",
+      cover:"https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600"
+    },
+    {
+      id:"little",
+      name:"Little Things",
+      description:"Flowers and simple joys",
+      cover:"https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600"
+    },
+    {
+      id:"adventures",
+      name:"Adventures",
+      description:"New places and experiences",
+      cover:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600"
+    },
+    {
+      id:"memories",
+      name:"My Memories",
+      description:"Moments to remember forever",
+      cover:"https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=600"
+    }
+  ];
+
+  // OPEN DATABASE
+  function openDatabase() {
+    return new Promise((resolve,reject) => {
+      const request = indexedDB.open("MyLittleWorldDB",1);
+
+      request.onupgradeneeded = e => {
+        const database = e.target.result;
+
+        if(!database.objectStoreNames.contains("albums")) {
+          database.createObjectStore("albums",{keyPath:"id"});
+        }
+
+        if(!database.objectStoreNames.contains("photos")) {
+          database.createObjectStore("photos",{keyPath:"id"});
+        }
+      };
+
+      request.onsuccess = e => resolve(e.target.result);
+      request.onerror = () => reject(request.error);
+    });
+  }
+
+  // GET DATABASE ITEMS
+  function getAll(storeName) {
+    return new Promise((resolve,reject) => {
+      const tx = db.transaction(storeName,"readonly");
+      const request = tx.objectStore(storeName).getAll();
+
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  }
+
+  // SAVE DATABASE ITEM
+  function saveItem(storeName,item) {
+    return new Promise((resolve,reject) => {
+      const tx = db.transaction(storeName,"readwrite");
+
+      tx.objectStore(storeName).put(item);
+
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+
+  // INITIALIZE WEBSITE
+  async function initializeAlbums() {
+    try {
+      db = await openDatabase();
+
+      const albums = await getAll("albums");
+
+      if(albums.length === 0) {
+        for(const album of defaultAlbums) {
+          await saveItem("albums",album);
+        }
+      }
+
+      await renderAlbums();
+
+    } catch(error) {
+      console.error(error);
+      alert("Storage error. Please use a modern browser with site storage enabled.");
+    }
+  }
+
+  // RENDER ALBUMS
+  async function renderAlbums() {
+    const grid = document.getElementById("albumGrid");
+    const albums = await getAll("albums");
+    const photos = await getAll("photos");
+
+    grid.innerHTML = "";
+
+    albums.forEach(album => {
+      const albumPhotos = photos.filter(p => p.albumId === album.id);
+
+      const card = document.createElement("div");
+      card.className = "album";
+
+      const cover = document.createElement("img");
+      cover.className = "album-cover";
+      cover.alt = album.name;
+
+      if(albumPhotos.length > 0) {
+        cover.src = URL.createObjectURL(albumPhotos[0].image);
+      } else {
+        cover.src = album.cover;
+      }
+
+      const heading = document.createElement("h3");
+      heading.textContent = album.name;
+
+      const description = document.createElement("p");
+      description.textContent =
+        album.description + " • " + albumPhotos.length + " photos";
+
+      const buttons = document.createElement("div");
+      buttons.className = "album-buttons";
+
+      const open = document.createElement("button");
+      open.textContent = "♡ Open Album";
+      open.onclick = () => openAlbum(album.id);
+
+      const remove = document.createElement("button");
+      remove.textContent = "Delete Album";
+      remove.onclick = () => deleteAlbum(album.id);
+
+      buttons.append(open,remove);
+      card.append(cover,heading,description,buttons);
+      grid.appendChild(card);
+    });
+  }
+
+  // CREATE ALBUM
+  async function createAlbum() {
+    const name = prompt("Enter your new album name:");
+
+    if(!name || !name.trim()) return;
+
+    const description =
+      prompt("Enter album description:") || "My special memories";
+
+    const album = {
+      id:"album_" + Date.now() + "_" + Math.random().toString(36).slice(2),
+      name:name.trim(),
+      description:description.trim(),
+      cover:"https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600"
+    };
+
+    await saveItem("albums",album);
+    await renderAlbums();
+
+    alert("Your album has been created! ♡");
+  }
+
+  // OPEN ALBUM
+  async function openAlbum(id) {
+    currentAlbumId = id;
+
+    const albums = await getAll("albums");
+    const album = albums.find(a => a.id === id);
+
+    if(!album) return;
+
+    document.getElementById("viewerTitle").textContent = album.name + " ♡";
+    document.getElementById("viewerDescription").textContent = album.description;
+    document.getElementById("albumViewer").classList.add("show");
+
+    await renderAlbumPhotos();
+  }
+
+  // CLOSE ALBUM
+  function closeAlbum() {
+    document.getElementById("albumViewer").classList.remove("show");
+    currentAlbumId = null;
+  }
+
+  // DISPLAY ALBUM PHOTOS
+  async function renderAlbumPhotos() {
+    const grid = document.getElementById("albumPhotoGrid");
+    const photos = await getAll("photos");
+
+    const albumPhotos = photos.filter(
+      p => p.albumId === currentAlbumId
+    );
+
+    grid.innerHTML = "";
+
+    if(albumPhotos.length === 0) {
+      const empty = document.createElement("div");
+      empty.className = "empty-album";
+      empty.innerHTML = `
+        <h3>♡ Your album is waiting for memories!</h3>
+        <p>Click Add Multiple Photos to fill your album.</p>
+      `;
+      grid.appendChild(empty);
+      return;
+    }
+
+    albumPhotos.forEach(photo => {
+      const container = document.createElement("div");
+      container.className = "album-photo";
+
+      const image = document.createElement("img");
+      image.src = URL.createObjectURL(photo.image);
+      image.alt = photo.name;
+
+      image.onclick = () => {
+        document.getElementById("lightboxImage").src = image.src;
+        document.getElementById("lightbox").classList.add("show");
+      };
+
+      const remove = document.createElement("button");
+      remove.className = "delete-photo";
+      remove.textContent = "×";
+      remove.title = "Delete photo";
+
+      remove.onclick = async () => {
+        if(!confirm("Delete this picture?")) return;
+
+        await new Promise((resolve,reject) => {
+          const tx = db.transaction("photos","readwrite");
+          tx.objectStore("photos").delete(photo.id);
+          tx.oncomplete = resolve;
+          tx.onerror = () => reject(tx.error);
+        });
+
+        await renderAlbumPhotos();
+        await renderAlbums();
+      };
+
+      container.append(image,remove);
+      grid.appendChild(container);
+    });
+  }
+
+  // UPLOAD MULTIPLE PHOTOS TO SELECTED ALBUM
+  document.getElementById("albumUpload").addEventListener("change",async function(e) {
+    const files = Array.from(e.target.files);
+
+    if(!currentAlbumId || files.length === 0) return;
+
+    const validFiles = files.filter(file => file.type.startsWith("image/"));
+
+    try {
+      for(const file of validFiles) {
+        const photo = {
+          id:"photo_" + Date.now() + "_" + Math.random().toString(36).slice(2),
+          albumId:currentAlbumId,
+          name:file.name,
+          image:file,
+          date:new Date().toISOString()
+        };
+
+        await saveItem("photos",photo);
+      }
+
+      await renderAlbumPhotos();
+      await renderAlbums();
+
+      alert(validFiles.length + " photo(s) successfully added! ♡");
+
+    } catch(error) {
+      console.error(error);
+      alert("Unable to save all photos. Browser storage may be full.");
+    }
+
+    this.value = "";
+  });
+
+  // DELETE ALBUM AND ITS PHOTOS
+  async function deleteAlbum(id) {
+    if(!confirm("Delete this album and ALL its photos?")) return;
+
+    await new Promise((resolve,reject) => {
+      const tx = db.transaction(["albums","photos"],"readwrite");
+
+      tx.objectStore("albums").delete(id);
+
+      const store = tx.objectStore("photos");
+      const request = store.openCursor();
+
+      request.onsuccess = () => {
+        const cursor = request.result;
+
+        if(cursor) {
+          if(cursor.value.albumId === id) {
+            cursor.delete();
+          }
+          cursor.continue();
+        }
+      };
+
+      tx.oncomplete = resolve;
+      tx.onerror = () => reject(tx.error);
+    });
+
+    if(currentAlbumId === id) closeAlbum();
+
+    await renderAlbums();
+  }
+
+  // GALLERY FILTER
+  function filterPhotos(category,button) {
+    document.querySelectorAll(".filter").forEach(b =>
+      b.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+    document.querySelectorAll("#galleryGrid .photo").forEach(photo => {
+      photo.style.display =
+        category === "all" || photo.dataset.category === category
+        ? "" : "none";
+    });
+  }
+
+  // PHOTO VIEWER
+  function viewPhoto(element) {
+    document.getElementById("lightboxImage").src =
+      element.querySelector("img").src;
+
+    document.getElementById("lightbox").classList.add("show");
+  }
+
+  function closePhoto() {
+    document.getElementById("lightbox").classList.remove("show");
+  }
+
+  // GALLERY UPLOAD
+  document.getElementById("upload").addEventListener("change",function(e) {
+    const files = Array.from(e.target.files);
+    const grid = document.getElementById("galleryGrid");
+
+    files.forEach(file => {
+      if(!file.type.startsWith("image/")) return;
+
+      const url = URL.createObjectURL(file);
+      galleryUrls.push(url);
+
+      const photo = document.createElement("div");
+      photo.className = "photo";
+      photo.dataset.category = "memories";
+      photo.onclick = function() {viewPhoto(this);};
+
+      const img = document.createElement("img");
+      img.src = url;
+      img.alt = file.name;
+
+      const label = document.createElement("div");
+      label.className = "photo-label";
+      label.textContent = file.name;
+
+      photo.append(img,label);
+      grid.appendChild(photo);
+    });
+
+    document.querySelectorAll(".filter").forEach(b =>
+      b.classList.remove("active")
+    );
+
+    document.querySelector(".filter").classList.add("active");
+
+    grid.querySelectorAll(".photo").forEach(p => {
+      p.style.display = "";
+    });
+
+    this.value = "";
+  });
+
+  // ESCAPE KEY
+  document.addEventListener("keydown",e => {
+    if(e.key === "Escape") {
+      closeAlbum();
+      closePhoto();
+      closeAchievement();
+    }
+  });
+
+  // START
+  initializeAlbums();
+
+  </script>
+
+  </body>
+  </html>
